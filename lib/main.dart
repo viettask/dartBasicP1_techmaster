@@ -1,4 +1,7 @@
+//Dart Basics P1
+
 void main(List<String> args) {
+  //Practice1
   String str =
       " đây là kết quả của buổi học thứ 2 về dart: dart basics (phần 1)...";
   String result = practice11(str);
@@ -10,6 +13,7 @@ void main(List<String> args) {
   String result2 = practice13(str);
   print(result2);
 
+  //Practice2
   List arr = [
     1,
     2,
@@ -27,6 +31,109 @@ void main(List<String> args) {
 
   String result3 = practice2(arr);
   print(result3);
+
+  //Practice3 Tinh giai thua cua 6
+  int num = practice3(6);
+  print(num);
+
+  //Practice3 Viet ham chuyen doi qua lai giua string, int, double
+  print("convert1 " + convertIntToString(num));
+  print("convert2 " + convertStringToInt("24").toString());
+
+  //Practice4
+  int a = 10;
+  print("add method: ${a.add(2)}");
+  print("subtract method: ${a.subtract(2)}");
+  print("divide method: ${a.divide(2)}");
+  print("multiple method: ${a.multiple(2)}");
+
+  //Practice5
+  List<int> arrayNum = [];
+  for (int i = 0; i <= 100; i++) {
+    arrayNum.add(i);
+  }
+  // print(arrayNum);
+  practice5(arrayNum);
+
+  //Practice6
+  practice6(20);
+}
+
+void practice6(int num) {
+  List<int> arrayPrimeNum = [];
+  if (num <= 2) {
+    arrayPrimeNum = [0, 1, 2];
+  } else {
+    arrayPrimeNum.add(2);
+    for (int i = 2; i < num; i++) {
+      for (int j = 0; j < arrayPrimeNum.length; j++) {
+        if (i % arrayPrimeNum[j] != 0) {
+          arrayPrimeNum.add(i);
+        }
+      }
+    }
+  }
+  print(arrayPrimeNum);
+}
+
+void practice5(List<int> arr) {
+  List<int> evenNum = [];
+  List<int> oddNum = [];
+  for (int i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 == 0)
+      evenNum.add(arr[i]);
+    else
+      oddNum.add(arr[i]);
+  }
+  print(evenNum);
+  print(oddNum);
+}
+
+void checkNumber(num number) {
+  if (number <= 0) throw Exception("Number <=");
+}
+
+//sample code
+//https://github.com/dart-lang/samples/blob/master/extension_methods/lib/privacy_source.dart
+extension on int {
+  int add(int num) {
+    // if (this < 0) {
+    //   return this;
+    // }
+    checkNumber(num);
+    return this + num;
+  }
+
+  int subtract(int num) {
+    checkNumber(num);
+    return this - num;
+  }
+
+  int divide(int num) {
+    checkNumber(num);
+    return this * num;
+  }
+
+  double multiple(int num) {
+    checkNumber(num);
+    return this / num;
+  }
+}
+
+String convertIntToString(int input) => input.toString();
+
+int convertStringToInt(String input) {
+  return int.parse(input);
+}
+
+int practice3(int num) {
+  int result = 1;
+  if (num != null) {
+    for (int i = 1; i <= num; i++) {
+      result = result * i;
+    }
+  }
+  return result;
 }
 
 String practice2(List arr) {
